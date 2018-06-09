@@ -1,0 +1,49 @@
+#include<stdio.h>
+int main()
+{
+    int i,j,p=0,q=0,count=0,count1=0;
+    char s[101];
+    scanf("%s",s);
+    for(i=0;s[i]!='\0';i++)
+    {
+        count=0;
+        count1=0;
+        if(s[i]=='1')
+        {
+            for(j=i;s[j]!='\0';j++)
+            {
+                if(s[j]=='1')
+                {
+                    count++;
+                }
+                else
+                    break;
+                if(count==7){
+                p=1;
+                break;
+            }
+        }
+        }
+        else
+        {
+            for(j=i;s[j]!='\0';j++)
+            {
+                if(s[j]=='0')
+                {
+                    count1++;
+                }
+                else
+                    break;
+                if(count1==7){
+                p=1;
+                break;
+                }
+            }
+        }
+    }
+    if(p==1)
+        printf("YES\n");
+    else
+        printf("NO\n");
+    return 0;
+}
