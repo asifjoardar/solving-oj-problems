@@ -1,0 +1,32 @@
+#include<bits/stdc++.h>
+using namespace std;
+main()
+{
+    int t,i,j,m,n,c,p[201],x;
+    cin>>t;
+    while(t--)
+    {
+        cin>>n;
+        p[0]=1;
+        m=1;
+        c=0;
+        for(i=1;i<=n;i++)
+        {
+            for(j=0;j<m;j++)
+            {
+                x=p[j]*i+c;
+                p[j]=x%10;
+                c=x/10;
+            }
+            while(c>0)
+            {
+                p[m]=c%10;
+                c/=10;
+                m++;
+            }
+        }
+        for(i=m-1;i>=0;i--)
+            cout<<p[i];
+        cout<<endl;
+    }
+}
