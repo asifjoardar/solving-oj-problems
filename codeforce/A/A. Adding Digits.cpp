@@ -1,0 +1,35 @@
+#include<bits/stdc++.h>
+using namespace std;
+main()
+{
+    int m,n,o,i,x,f=0;
+    cin>>m>>n>>o;
+    if(m%n==0)
+    {
+        cout<<m;
+        for(i=0;i<o;i++)
+            cout<<0;
+        cout<<endl;
+    }
+    else
+    {
+        m=m*10;
+        for(i=0;i<10;i++)
+        {
+            x=m+i;
+            if(x%n==0){
+                    f=1;
+                break;
+            }
+        }
+        if(f==0)
+            cout<<-1<<endl;
+        else
+        {
+            cout<<x;
+            for(i=0;i<o-1;i++)
+            cout<<0;
+        cout<<endl;
+        }
+    }
+}
