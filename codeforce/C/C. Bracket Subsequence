@@ -1,0 +1,21 @@
+#include<bits/stdc++.h>
+using namespace std;
+main()
+{
+    int i,p=0,q=0,a,b;
+    char s[200001];
+    cin>>a>>b>>s;
+    for(i=0;i<a;i++)
+    {
+        if(s[i]=='('&&p<b/2){
+            cout<<'(';
+            p++;
+        }
+        else if(s[i]==')'&&q<b/2)
+        {
+            cout<<')';
+            q++;
+        }
+    }
+    cout<<endl;
+}
