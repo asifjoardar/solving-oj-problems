@@ -10,10 +10,10 @@ main()
 	int n,m;
 	cin>>n>>m;
 	int l=n-1;
-	while(a--)
+	while(n--)
 	cout<<1;
 	cout<<endl;
-	while(b--)
+	while(l--)
 	cout<<8;
 	cout<<9<<endl;
 }
