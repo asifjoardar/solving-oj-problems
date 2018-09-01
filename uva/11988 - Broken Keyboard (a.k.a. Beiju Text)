@@ -1,0 +1,28 @@
+#include<bits/stdc++.h>
+#define ll long long int
+using namespace std;
+main()
+{
+	#ifndef ONLINE_JUDGE
+	freopen("input.txt","r",stdin);
+	freopen("output.txt","w",stdout);
+	#endif
+	string s;
+    while(cin>>s)
+    {
+        list<char>s1;
+        list<char>::iterator it=s1.begin();
+        for(int i=0;i<s.size();i++)
+        {
+            if(s[i]=='[')
+                it=s1.begin();
+            else if(s[i]==']')
+                it=s1.end();
+            else
+                s1.insert(it,s[i]);
+        }
+        for(it=s1.begin();it!=s1.end();it++)
+            cout<<*it;
+        cout<<endl;
+    }
+}
