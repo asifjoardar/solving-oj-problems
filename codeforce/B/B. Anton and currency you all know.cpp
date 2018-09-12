@@ -1,29 +1,46 @@
 #include<bits/stdc++.h>
 #define ll long long int
 using namespace std;
-int asif(int n)
-{
-	int sum=0;
-	while(n>0)
-	{
-		sum+=n%10;
-		n/=10;
-	}
-	return sum;
-}
 main()
 {
-	#ifndef ONLINE_JUDGE
+    /*#ifndef ONLINE_JUDGE
 	freopen("input.txt","r",stdin);
 	freopen("output.txt","w",stdout);
-	#endif
-	int a=19,n;
-	cin>>n;
-	while(n)
-	{
-		if(asif(a)==10)
-			n--;
-		a++;
-	}
-	cout<<a-1<<endl;
+	#endif*/
+    int i,count=0;
+    string s;
+    cin>>s;
+    for(i=0;i<s.size();i++){
+    if((s[i]-'0')%2==0)
+    count++;
+    }
+    if(count==0)
+    {
+        cout<<-1<<endl;
+    }
+    else
+    {
+        for(i=0;i<s.size();i++)
+        {
+            if((s[i]-'0')%2==0)
+            {
+                if(count==1)
+                {
+                    swap(s[i],s[s.size()-1]);
+                    cout<<s<<endl;
+                    break;
+                }
+                if((s[i]-'0')<(s[s.size()-1]-'0'))
+                {
+                    swap(s[i],s[s.size()-1]);
+                    cout<<s<<endl;
+                    break;
+                }
+                else
+                {
+                    count--;
+                }
+            }
+        }
+    }
 }
