@@ -1,38 +1,37 @@
-#include<iostream>
-#include<cstdio>
+#include <bits/stdc++.h>
 using namespace std;
-int asif(int a[],int n)
+#define ll long long int
+int a[1001];
+void sieve()
 {
-    int i;
-    for(i=1;i<=n;i++)
-    {
-        if(a[i]!=0)
+	 int i,j;
+	 for(i=4;i<1001;i+=2) a[i]=1;
+	 for(i=3;i<1001;i+=2)
+	 {
+        if(a[i]==0)
         {
-            cout<<" "<<i;
+            for(j=3;j*i<1001;j++)
+            a[i*j]=1;
         }
-    }
-    cout<<endl;
+	 }
 }
-int main()
+void asif(int n)
 {
-    int a[1001],b[1001],i,j,n,c,m;
-    for(i=0;i<1001;i++) a[i]=1;
-    a[0]=0;
-    for(i=4;i<1001;i+=2) a[i]=0;
-    for(i=3;i<1001;i++)
-    {
-        if(a[i]!=0)
-        {
-            for(j=3;i*j<1001;j++)
-                a[i*j]=0;
-        }
-    }
-    while(scanf("%d%d",&n,&c)==2)
+    for(int i=1;i<=n;i++)
+    if(a[i]==0)
+        cout<<" "<<i;
+        cout<<endl;
+}
+main(){
+    sieve();
+    int n,c,i,j,m;
+     int b[1001];
+    while(cin>>n>>c)
     {
         cout<<n<<" "<<c<<":";
         if(n<=c*2)
         {
-            asif(a,n);
+            asif(n);
         }
         else
         {
@@ -40,7 +39,7 @@ int main()
             j=0;
             for(i=1;i<=n;i++)
             {
-                if(a[i]!=0)
+                if(a[i]==0)
                 {
                     count++;
                     b[j++]=i;
@@ -49,7 +48,7 @@ int main()
             if(count%2==0)
             {
                 m=(count-(c*2))/2;
-                if(count<(c*2)) asif(a,n);
+                if(count<(c*2)) asif(n);
                 else{
                 for(i=m;;i++)
                 {
@@ -65,7 +64,7 @@ int main()
             else
             {
                 m=(count-(c*2-1))/2;
-                if(count<(c*2-1)) asif(a,n);
+                if(count<(c*2-1)) asif(n);
                 else{
                 for(i=m;;i++)
                 {
@@ -81,5 +80,4 @@ int main()
         }
         cout<<endl;
     }
-    return 0;
 }
