@@ -1,0 +1,51 @@
+/** BiSmIlLaHiR rAhMaNiR rAhIm **\
+
+*$*$*$*$*$*$*$*$*$*$*$*$*$*$*$*$*$*$*$*$*$*$*$*$*$*
+*$*                                             *$*
+*$*    ||||||||  ||||||||  ||||||||  ||||||||   *$*
+*$*    ||    ||  ||           ||     ||         *$*
+*$*    ||||||||  ||||||||     ||     ||||||     *$*
+*$*    ||    ||        ||     ||     ||         *$*
+*$*    ||    ||  ||||||||  ||||||||  ||         *$*
+*$*                                             *$*
+*$*$*$*$*$*$*$*$*$*$*$*$*$*$*$*$*$*$*$*$*$*$*$*$*$*
+
+            \**  DIIT(17th batch) **/
+
+#include<bits/stdc++.h>
+#define ll long long int
+using namespace std;
+//ll count=0;
+main()
+{
+	#ifndef ONLINE_JUDGE
+	freopen("input.txt","r",stdin);
+	freopen("output.txt","w",stdout);
+	#endif
+	int t,i,j,n,p,q,x;
+	cin>>t;
+	for(i=1;i<=t;i++)
+	{
+		map<int,int>mp;
+		int ans=0;
+		cin>>n;
+		for(j=0;j<n;j++){
+			cin>>x;
+			mp[x]++;
+		}
+		for(auto it=mp.begin();it!=mp.end();it++)
+		{
+			p=it->first+1;
+			q=it->second;
+			if(q%p==0)
+				ans+=(q/p)*(p);
+			else
+			{
+				ans+=(q/p)*(p);
+				ans+=p;
+			}
+		}
+		printf("Case %d: %d\n",i,ans);
+	}
+}
+
