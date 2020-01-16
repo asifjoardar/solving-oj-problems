@@ -1,20 +1,13 @@
-#include<stdio.h>
+#include <stdio.h>
 int main()
 {
-    int n,s,sum,i,j,a;
-
-    scanf("%d",&n);
-    for(i=1;i<=n;i++)
+    long long int m,n,a,b, sum, tst, i;
+    scanf("%lld", &tst);
+    for(i=1; i<=tst; i++)
     {
-            s=1;
-            sum=0;
-        scanf("%d",&a);
-        for(j=1;j<=a;j++)
-        {
-             sum=sum+s;
-                s=s*-1;
-        }
-        printf("%d\n",sum);
+        scanf("%lld%lld", &n, &m);
+        sum = m*(n/2);
+        printf("Case %lld: %lld\n", i, sum);
     }
     return 0;
 }
