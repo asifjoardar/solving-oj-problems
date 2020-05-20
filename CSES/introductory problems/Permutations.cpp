@@ -16,7 +16,7 @@ void sol(ll n){
 		cout<<i<<" ";
 	}
 	cout<<"4 2 ";
-	for(i=6;i<=n;i++)
+	for(i=6;i<=n;i+=2)
 	    cout<<i<< " ";
 	cout endl;
 }
