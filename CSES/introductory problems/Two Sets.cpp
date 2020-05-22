@@ -17,7 +17,7 @@ int main() {
 	if(sum%2==0){
         sum=sum/2;
         ll num;
-		for(i=1;i<n;i++){
+		for(i=1;i<=n;i++){
 			sum1+=i;
 			if(sum1>sum){
 				num=sum1-sum;
