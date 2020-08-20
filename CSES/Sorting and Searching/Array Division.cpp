@@ -38,43 +38,35 @@ int main()
     freopen("input.txt","r",stdin);
     freopen("output.txt","w",stdout);
     #endif*/
-    ll n,k,i,mx=0;
+    ll n,k,i,mx=0,sum=0;
     cin>>n>>k;
     ll a[n+1];
     for(i=1;i<=n;i++){
         cin>>a[i];
         mx=max(mx,a[i]);
+        sum+=a[i];
     }
-    if(n==k)
-        cout<<mx<<endl,exit(0);
-    ll l=0,r=1e18,cnt=0,sum=0,ans=1e18;
+    ll l=mx,r=sum,cnt=0;
     while(l<=r){
         ll mid=l+(r-l)/2;
-        cnt=0;
+        cnt=1;
         sum=0;
         for(i=1;i<=n;i++){
-            if(a[i]>mid){
-                cnt=k+1;
-                break;
+            if(sum+a[i]<=mid){
+                sum+=a[i];
             }
-            if(sum+a[i]>mid){
-                sum=0;
+            else{
+                sum=a[i];
                 cnt++;
             }
-            sum+=a[i];
         }
-        if(sum and sum<=mid)
-            cnt++;
-        
         if(cnt<=k){
-            if(cnt==k)
-                ans=min(ans,mid);
             r=mid-1;
         }
         else{
             l=mid+1;
         }
     }
-    cout<<ans<<endl;
+    cout<<r+1<<endl;
     return 0;
 }
