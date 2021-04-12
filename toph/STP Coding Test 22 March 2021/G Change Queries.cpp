@@ -31,14 +31,14 @@ using namespace std;
 ll fx[]={1,0,-1,0,-1,-1,1,1};
 ll fy[]={0,1,0,-1,-1,1,-1,1};
 
-vector<vector<int>>adj(200005);
-int vis[200005],n,start[200005],finish[200005],Time=0,cost[200005];
+vector<vector<ll>>adj(200005);
+ll vis[200005],n,start[200005],finish[200005],Time=0,cost[200005];
 vector<ll>v,v1;
 
-void dfs(int sn)
+void dfs(ll sn)
 {
     start[sn]=Time++;
-    for(int i=0;i<adj[sn].size();i++)
+    for(ll i=0;i<adj[sn].size();i++)
     {
         if(vis[adj[sn][i]]==0)
         {
@@ -51,34 +51,34 @@ void dfs(int sn)
     v1.pb(sn);
 }
 
-int tree[200005 * 3];
-void init(int node, int b, int e)
+ll tree[200005 * 3];
+void init(ll node, ll b, ll e)
 {
     if (b == e) {
         tree[node] = v[b];
         return;
     }
-    int Left = node * 2;
-    int Right = node * 2 + 1;
-    int mid = (b + e) / 2;
+    ll Left = node * 2;
+    ll Right = node * 2 + 1;
+    ll mid = (b + e) / 2;
     init(Left, b, mid);
     init(Right, mid + 1, e);
     tree[node] = tree[Left] + tree[Right];
 }
-int query(int node, int b, int e, int i, int j)
+ll query(ll node, ll b, ll e, ll i, ll j)
 {
     if (i > e || j < b)
         return 0;
     if (b >= i && e <= j)
         return tree[node];
-    int Left = node * 2;
-    int Right = node * 2 + 1;
-    int mid = (b + e) / 2;
-    int p1 = query(Left, b, mid, i, j);
-    int p2 = query(Right, mid + 1, e, i, j);
+    ll Left = node * 2;
+    ll Right = node * 2 + 1;
+    ll mid = (b + e) / 2;
+    ll p1 = query(Left, b, mid, i, j);
+    ll p2 = query(Right, mid + 1, e, i, j);
     return p1 + p2;
 }
-void update(int node, int b, int e, int i, int newvalue)
+void update(ll node, ll b, ll e, ll i, ll newvalue)
 {
     if (i > e || i < b)
         return;
@@ -86,9 +86,9 @@ void update(int node, int b, int e, int i, int newvalue)
         tree[node] = newvalue;
         return;
     }
-    int Left = node * 2;
-    int Right = node * 2 + 1;
-    int mid = (b + e) / 2;
+    ll Left = node * 2;
+    ll Right = node * 2 + 1;
+    ll mid = (b + e) / 2;
     update(Left, b, mid, i, newvalue);
     update(Right, mid + 1, e, i, newvalue);
     tree[node] = tree[Left] + tree[Right];
@@ -103,7 +103,7 @@ int main()
     freopen("output.txt","w",stdout);
     #endif
     
-    int x,y,i,q,k,c,w;
+    ll x,y,i,q,k,c,w;
     cin>>n>>q;
     for(i=1;i<=n;i++){
         cin>>cost[i];
@@ -112,7 +112,7 @@ int main()
     {
         cin>>x>>y;
         adj[x].pb(y);
-        //adj[y].pb(x);
+        adj[y].pb(x);
     }
     v.pb(0);
     for(i=1;i<=n;i++)
